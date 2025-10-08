@@ -83,9 +83,10 @@ const SkeletonCard = ({ type = "default", slide = true }) => {
               className="skeleton"
               style={{
                 borderRadius: "50%",
-                width: 100,
-                height: 100,
+                width: 5,
+                height: 10,
                 marginBottom: "10px",
+                gap: 10,
               }}
             />
             <div className="skeleton-text" style={{ width: "60%" }} />

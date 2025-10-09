@@ -3,6 +3,8 @@ import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import SkeletonAll from "../components/UI/SkeletonAll"; // ✅ Import adaptive skeleton
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function ItemDetails() {
   
@@ -14,20 +16,28 @@ function ItemDetails() {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`);
     console.log(data);
     setItem(data);
-    setTimeout(() => setLoading(false) ,2000);
+    setTimeout(() => setLoading(false) ,200);
     
   }
 
   useEffect(() => {
     window.scrollTo(0, 0);
+      // ✅ Initialize AOS
+            AOS.init({
+              duration: 2000, // animation duration (ms)
+              once: true,     // whether animation should happen only once
+              easing: "ease-in-out",
+            })
+        
+              // Optional: refresh AOS if content updates dynamically
+            AOS.refresh();
     fetchItem();
   }, [nftId]);
 
   // ✅ Skeleton loading layout
   if (loading) {
     return (
-      <section data-aos="zoom-in">
-      <div id="wrapper">
+      <div id="wrapper" data-aos="zoom-in">
         <div className="no-bottom no-top" id="content">
           <div id="top"></div>
           <section aria-label="section" className="mt90 sm-mt-0">
@@ -78,12 +88,12 @@ function ItemDetails() {
           </section>
         </div>
       </div>
-      </section>
+      
     );
   }
 
   return (
-    <div id="wrapper">
+    <div id="wrapper" data-aos="zoom-in">
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">

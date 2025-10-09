@@ -36,7 +36,9 @@ const TopSellers = () => {
               {loading ?
 
                 Array(12).fill(0).map((_, index) => (
-                   <SkeletonAll type="author" />
+                 
+                   <SkeletonAll type="author" key={index}  />
+                  
                   )) 
              
               :

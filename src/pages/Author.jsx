@@ -4,6 +4,8 @@ import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import SkeletonAll from "../components/UI/SkeletonAll"; // ✅ Import adaptive skeleton
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Author = () => {
   const { authorId } = useParams(); // get authorId from route param
@@ -17,17 +19,26 @@ const Author = () => {
         const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`);
         console.log(data);
         setAuthor(data);
-     setTimeout(() =>  setLoading(false), 2000);   
+     setTimeout(() =>  setLoading(false), 200);   
     };
 
     fetchAuthor();
+      // ✅ Initialize AOS
+                AOS.init({
+                  duration: 2000, // animation duration (ms)
+                  once: true,     // whether animation should happen only once
+                  easing: "ease-in-out",
+                })
+            
+                  // Optional: refresh AOS if content updates dynamically
+                AOS.refresh();
   }, [authorId]);
 
 
 // ✅ Skeleton loading layout using SkeletonAll
   if (loading) {
     return (
-      <div id="wrapper">
+      <div id="wrapper" data-aos="zoom-in">
         <div className="no-bottom no-top" id="content">
           <div id="top"></div>
 
@@ -78,7 +89,7 @@ const Author = () => {
   };
 
    return (
-    <div id="wrapper">
+    <div id="wrapper" data-aos="zoom-in">
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
 

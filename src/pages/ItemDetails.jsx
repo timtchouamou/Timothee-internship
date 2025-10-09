@@ -14,7 +14,7 @@ function ItemDetails() {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`);
     console.log(data);
     setItem(data);
-    setTimeout(() => setLoading(false) ,3000);
+    setTimeout(() => setLoading(false) ,2000);
     
   }
 

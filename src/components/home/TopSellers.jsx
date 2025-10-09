@@ -11,7 +11,7 @@ const TopSellers = () => {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers`);
     console.log(data);
     setAuthor(data);
-    setTimeout(() => setLoading(false),4000);
+    setTimeout(() => setLoading(false),2000);
 
   }
 

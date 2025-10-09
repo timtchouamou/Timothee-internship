@@ -33,7 +33,7 @@ const ExploreItems = ({explore}) => {
     setTimeLeft(countdowns);
     setCard(explore);
 
-    setTimeout(() => setLoading(false), 4000);
+    setTimeout(() => setLoading(false), 2000);
   }
 
 }, [explore]);

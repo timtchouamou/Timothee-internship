@@ -2,11 +2,24 @@ import React, { useEffect, useState } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
 import axios from "axios";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 function Explore() {
   useEffect(() => {
+     // Scroll to top when the component loads
     window.scrollTo(0, 0);
+   
+       // ✅ Initialize AOS
+        AOS.init({
+          duration: 2000, // animation duration (ms)
+          once: true,     // whether animation should happen only once
+          easing: "ease-in-out",
+        })
+    
+          // Optional: refresh AOS if content updates dynamically
+        AOS.refresh();
   }, []);
 
   const [explore, setExplore] = useState([])
@@ -32,7 +45,7 @@ function Explore() {
           id="subheader"
           className="text-light"
           style={{ background: `url("${SubHeader}") top` }}
-        >
+        data-aos="zoom-in">
           <div className="center-y relative text-center">
             <div className="container">
               <div className="row">
@@ -46,7 +59,7 @@ function Explore() {
         </section>
        
        
-        <section aria-label="section">
+        <section aria-label="section" data-aos="zoom-in-up">
           <div className="container">
             <div className="row">
              

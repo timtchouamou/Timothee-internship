@@ -19,7 +19,7 @@ const NewItems = () => {
       const { data } = await axios.get("https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems");
       console.log(data)
       setCard(data);
-      setTimeout(() => setLoading(false),4000); 
+      setTimeout(() => setLoading(false),2000); 
   }
 
   useEffect(() => {
